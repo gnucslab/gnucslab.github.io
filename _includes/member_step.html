@@ -1,0 +1,15 @@
+{% assign active_professor = nil %}
+{% assign active_students = nil %}
+{% assign active_alumni = nil %}
+
+{% if page.url == '/member/professor.html' %}
+{% assign active_professor = 'second-nav-active' %}
+{% elsif page.url == '/member/students.html' %}
+{% assign active_students = 'second-nav-active' %}
+{% else page.url == '/member/alumni.html' %}
+{% assign active_alumni = 'second-nav-active' %}
+{% endif %}
+
+<a class="second-nav {{ active_professor }}" href="professor.html">Professor</a> |
+<a class="second-nav {{ active_students }}" href="students.html">Students</a> |
+<a class="second-nav {{ active_alumni }}" href="alumni.html">Alumni</a>

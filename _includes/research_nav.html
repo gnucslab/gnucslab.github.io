@@ -1,0 +1,11 @@
+{% assign active_areas = nil %}
+{% assign active_projects = nil %}
+
+{% if page.url == '/research/index.html' %}
+{% assign active_areas = 'second-nav-active' %}
+{% elsif page.url == '/research/projects.html' %}
+{% assign active_projects = 'second-nav-active' %}
+{% endif %}
+
+<a class="second-nav {{ active_areas }}" href="index.html">Research</a> |
+<a class="second-nav {{ active_projects }}" href="projects.html">Project</a>

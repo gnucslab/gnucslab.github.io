@@ -1,0 +1,865 @@
+@import "bootstrap";
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $base-font;
+  font-size: $base-font-size;
+  line-height: 1.6;
+}
+
+// Fixed page header overlaps in-page anchors
+// https://stackoverflow.com/a/28824157
+:target::before {
+  content: "";
+  display: block;
+  height: 60px; /* fixed header height*/
+  margin: -60px 0 0; /* negative fixed header height */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  padding-top: 0.9rem;
+  max-width: 1200px !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px 20px 20px;
+}
+
+.content-container {
+  max-width: 70%;
+  margin-top: 5rem;
+  margin-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media-breakpoint-down(md) {
+    max-width: 80%;
+  }
+}
+
+/* ----------
+    flex
+  ----------- */
+.flex {
+  display: flex;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+/* ----------
+  Contact
+  ----------- */
+.contact {
+  &-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1.1rem;
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+    }
+  }
+
+  &-map {
+    width: 100%;
+    min-height: 250px;
+    @include media-breakpoint-up(md) {
+      width: 60%;
+      min-height: 300px;
+    }
+  }
+
+  &-item {
+    margin: 0.5rem 0;
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      margin: 0 0.5rem;
+      width: 40%;
+    }
+  }
+
+  &-section {
+    font-size: 1rem !important;
+    margin: 0;
+  }
+
+  &-col {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+/*--------------
+  Header
+  -------------- */
+.header {
+  // padding: 2%;
+  margin-bottom: 1.5em;
+
+  &-title {
+    margin: 0.3em 0 0;
+    font-size: 2.25em;
+    line-height: 1.2em;
+    font-weight: 600;
+
+    display: inline-block;
+
+    img {
+      height: 2.5rem;
+      float: left;
+      margin: 0;
+    }
+
+    a {
+      color: $base-color;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    span {
+      color: $oc-gray-5;
+    }
+  }
+
+  &-nav {
+    a {
+      color: $oc-gray-7;
+      text-transform: lowercase;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      transition: all 0.2s ease;
+      margin-right: 0.3rem;
+      font-weight: 400;
+
+      &:hover,
+      &:focus {
+        color: $oc-gray-7;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.header-small {
+  text-align: left;
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  a {
+    color: $base-color;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+/* -----------
+  Navbar
+  ------------ */
+.navbar {
+  &-custom {
+    top: 0;
+    width: 100%;
+    padding-left: 0 !important;
+    background-color: $oc-gray-1;
+    z-index: 500;
+    ul > li {
+      margin: 0;
+      line-height: unset;
+    }
+    &-img {
+      float: left;
+      height: 1rem;
+      margin-top: 0.45rem;
+      margin-right: 0.3rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &-collapse-custom {
+    @include media-breakpoint-down(md) {
+      min-width: 100vw;
+      margin-top: 1rem;
+    }
+  }
+
+  &-brand-custom {
+    font-weight: 500;
+    padding-left: 1rem;
+  }
+
+  &-nav-custom {
+    background-color: $oc-gray-1;
+    padding-left: 1rem !important;
+    @include media-breakpoint-down(md) {
+      width: 100vw;
+    }
+  }
+}
+
+/* --------------
+  second-nav
+  --------------- */
+
+.second-nav {
+  color: black;
+
+  &-active {
+    color: cornflowerblue;
+  }
+}
+
+/*--------------
+  Page
+  -------------- */
+
+.page {
+  &-title {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2.25em;
+    line-height: 1.2em;
+    font-weight: 600;
+  }
+}
+
+/*--------------
+  Post
+  -------------- */
+.post {
+  &-title {
+    font-size: 1.15rem;
+    font-weight: 500;
+  }
+
+  &-date {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: $base-lighten-color;
+    font-size: 0.75rem;
+  }
+
+  &-content {
+    p {
+      font-size: 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      border: none;
+    }
+
+    ol {
+      font-size: 0.9rem;
+    }
+  }
+
+  &-footer {
+    margin-top: 3em;
+
+    &-file {
+      a {
+        font-size: 0.8rem;
+        text-decoration: underline;
+        margin-right: 0.5em;
+      }
+    }
+
+    &-author {
+      font-style: italic;
+      font-size: 0.8em;
+    }
+  }
+
+  &-tag {
+    margin-top: 0.8rem;
+
+    ul {
+      margin: 0;
+      li:before {
+        content: "";
+      }
+
+      li {
+        margin: 0;
+        font-size: 0.75rem;
+        font-weight: 300;
+        display: inline;
+        list-style-type: none;
+        text-transform: lowercase;
+
+        a {
+          display: inline-block;
+          margin: 4px;
+          margin-left: 0px;
+          color: $oc-white;
+          background-color: $oc-gray-6;
+          text-decoration: none;
+          border-radius: 3px;
+
+          span {
+            float: left;
+            padding: 0.5px 5px;
+          }
+        }
+
+        a:hover {
+          background-color: $oc-gray-7;
+        }
+
+        a:visited {
+          background-color: $oc-gray-5;
+        }
+
+        a:visited:hover {
+          background-color: $oc-gray-7;
+        }
+      }
+    }
+  }
+
+  //   &-file {
+  //     margin-bottom: 1.5rem;
+  //     line-height: 1.2em;
+
+  //     img {
+  //         height: 1.2em;
+  //         float: left;
+  //         margin-right: .2em;
+  //     }
+
+  //     a {
+  //         font-size: .8rem;
+  //         text-decoration: underline;
+  //         margin-right: .5em;
+  //     }
+  //   }
+
+  //   &-disqus {
+  //     margin-top: 4rem;
+  //   }
+}
+
+/*--------------
+  Post list
+  -------------- */
+
+.list {
+  &-post {
+    padding: 8px 0;
+
+    &:hover {
+      background-color: $background-over-color;
+      border-color: transparent;
+      border-radius: 10px;
+    }
+
+    a {
+      color: $base-color;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    &-title {
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    &-date {
+      color: $base-lighten-color;
+      font-size: 0.8rem;
+    }
+
+    &-desc {
+      color: $oc-gray-7;
+      margin-bottom: 0.25rem;
+      font-size: 0.7rem;
+    }
+  }
+
+  &-pagination {
+    // margin-top: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    // text-transform: lowercase;
+
+    &-previous {
+      float: left;
+      padding-left: 2%;
+      a {
+        color: $oc-gray-6;
+
+        &:hover,
+        &:focus {
+          color: $oc-gray-7;
+          text-decoration: none;
+        }
+      }
+    }
+
+    &-next {
+      float: right;
+      padding-right: 2%;
+      a {
+        color: $oc-gray-6;
+
+        &:hover {
+          color: $oc-gray-7;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+/*--------------
+  Tags
+  -------------- */
+.tag {
+  &-index {
+    ul {
+      margin: 0;
+      li:before {
+        content: "";
+      }
+
+      li {
+        margin: 0;
+        font-size: 0.75rem;
+        display: inline;
+        list-style-type: none;
+        text-transform: lowercase;
+
+        a {
+          display: inline-block;
+          margin: 4px;
+          margin-left: 0px;
+          color: $oc-white;
+          background-color: $oc-gray-6;
+          text-decoration: none;
+          border-radius: 3px;
+
+          span {
+            float: left;
+            padding: 0.5px 5px;
+          }
+
+          .count {
+            background-color: $oc-gray-7;
+            border-radius: 0 3px 3px 0;
+          }
+        }
+
+        a:hover {
+          background-color: $oc-gray-7;
+        }
+      }
+    }
+  }
+
+  &-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    padding: 1rem 0;
+  }
+
+  &-post {
+    a {
+      color: $base-color;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    &:hover {
+      color: $base-color;
+      text-decoration: none;
+      background-color: $background-over-color;
+      border-color: transparent;
+    }
+
+    list-style: disc;
+    margin: 0;
+    margin-left: 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/*--------------
+  Members
+  -------------- */
+.members {
+  &-list {
+    @include media-breakpoint-up(sm) {
+      display: grid;
+      grid-template-columns: 50% 50%;
+    }
+
+    &-alumni {
+      display: block;
+      list-style: inside;
+    }
+  }
+
+  &-job {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+
+  &-img-container {
+    position: relative;
+    width: 30%;
+    padding-top: 30%;
+  }
+
+  &-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &-img-professor {
+    width: 30%;
+    // height: 100%;
+  }
+
+  &-info {
+    margin: 16px 8px;
+
+    &:hover {
+      background-color: $background-over-color;
+      border-color: transparent;
+      border-radius: 4px;
+    }
+
+    a {
+      color: $base-color;
+      height: 100%;
+      &:hover,
+      &:focus {
+        color: unset !important;
+        text-decoration: none;
+      }
+    }
+
+    &-name {
+      color: $base-color;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    &-desc {
+      color: $base-lighten-color;
+      font-size: 0.8rem;
+    }
+
+    &-pos {
+      margin-bottom: 0.3rem;
+    }
+
+    &-right {
+      margin-left: 1.1rem;
+    }
+
+    &-alumni {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/*--------------
+  Authors
+  -------------- */
+.author {
+  &-name {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2.25em;
+    line-height: 1.2em;
+    font-weight: 600;
+  }
+
+  &-post {
+    margin-bottom: 0.5rem;
+
+    &-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    &-content {
+      padding: 0.1rem;
+
+      &:hover {
+        background-color: $background-over-color;
+        border-color: transparent;
+        border-radius: 4px;
+      }
+
+      a {
+        color: $base-color;
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+        }
+      }
+
+      &-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      &-description {
+        // color: $base-lighten-color;
+        color: $base-color;
+        font-size: 1rem;
+      }
+
+      &-date {
+        color: $base-lighten-color;
+        font-size: 0.75rem;
+        // text-transform: uppercase;
+        margin-left: 0.2rem;
+      }
+    }
+  }
+}
+
+/*--------------
+  News
+  -------------- */
+.news {
+  &-list {
+    &-post {
+      margin-bottom: 0.5rem;
+
+      &-content {
+        padding: 0.1rem;
+
+        &:hover {
+          background-color: $background-over-color;
+          border-color: transparent;
+          border-radius: 4px;
+        }
+
+        a {
+          color: $base-color;
+
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+        }
+
+        &-title {
+          font-weight: 500;
+        }
+
+        &-description {
+          font-size: 0.7rem;
+        }
+
+        &-date {
+          color: $base-lighten-color;
+          font-size: 0.75rem;
+          margin-left: 0.2rem;
+        }
+      }
+    }
+  }
+}
+
+/*--------------
+  Publication
+  -------------- */
+.publication {
+  &-list {
+    &-post {
+      margin-bottom: 0.5rem;
+
+      &-content {
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        a {
+          color: $base-color;
+
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+        }
+
+        &-title {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+
+        &-description {
+          color: $base-lighten-color;
+          font-size: 0.7rem;
+        }
+
+        &-date {
+          color: $base-lighten-color;
+          font-size: 0.75rem;
+          text-transform: uppercase;
+        }
+      }
+
+      &-link {
+        font-size: 0.8rem;
+        a {
+          color: cornflowerblue;
+        }
+      }
+    }
+  }
+}
+
+/*--------------
+  Seminar
+  -------------- */
+.seminar {
+  &-list {
+    &-post {
+      padding: 0.5rem;
+
+      &:hover {
+        background-color: $background-over-color;
+        border-color: transparent;
+        border-radius: 4px;
+      }
+
+      a {
+        color: $base-color;
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+        }
+      }
+
+      &-title {
+        font-weight: 500;
+      }
+
+      &-date {
+        color: $base-lighten-color;
+        font-size: 0.7rem;
+        margin-left: 0.2rem;
+      }
+
+      &-description {
+        color: $base-lighten-color;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+/*--------------
+  Research
+  -------------- */
+.research {
+  &-list {
+    &-post {
+      margin-bottom: 0.5rem;
+
+      &-content {
+        padding: 0.1rem;
+
+        a {
+          color: $base-color;
+
+          &:hover,
+          &:focus {
+            text-decoration: none;
+          }
+        }
+
+        &-title {
+          font-weight: 500;
+        }
+
+        &-description {
+          color: $base-lighten-color;
+          font-size: 0.7rem;
+        }
+
+        &-date {
+          color: $base-lighten-color;
+          font-size: 0.75rem;
+          // text-transform: uppercase;
+          margin-left: 0.2rem;
+        }
+      }
+    }
+  }
+
+  &-img {
+    margin: 0;
+    min-width: 40%;
+    width: 0;
+    height: 100%;
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+
+    &-container {
+      margin: 1rem 0;
+      // justify-content: center;
+    }
+  }
+}
+
+/*--------------
+  Footer
+  -------------- */
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+
+  &-link {
+    margin: 0.2rem;
+
+    a {
+      color: $base-color;
+      margin: 4px;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+---
+layout: page
+title: Tags
+permalink: /tags/
+---
+
+
+{% assign sorted = site.tags | sort %}
+
+<h2 class="tag-index section">
+  <ul>
+    {% for tag in sorted %}
+    <li>
+      <a href="#{{ tag[0] }}">
+        <span>{{ tag[0] }}</span>
+        <span class="count">{{ tag[1].size }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</h2>
+
+{% for tag in sorted %}
+<article>
+  <h3 class="section" id="{{ tag[0] }}">
+    {{ tag[0] }}
+  </h3>
+  <ul>
+    {% for post in tag[1] %}
+    {% if post.title %}
+    <li class="tag-post">
+      <a href="{{ post.url }}">
+        <span class="tag-post-title">{{ post.title }}</span>
+      </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</article>
+{% endfor %}

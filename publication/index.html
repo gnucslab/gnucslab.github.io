@@ -1,0 +1,160 @@
+---
+layout: page
+title: Publication
+permalink: /publication/index.html
+---
+
+{% include publication_nav.html %}
+
+<div class="publication">
+  <div class="publication-list">
+    <div class="section-container">
+      <h2 class="section">International Journal</h2>
+      {% if site.categories.journal_international %}
+      {% assign grouped = site.categories.journal_international | sort: "date"
+        | reverse | group_by_exp: "p", "p.date | date: '%Y' | to_integer" %}
+      {% assign before = false %}
+      {% assign class = 'second-section-container' %}
+      {% for year in grouped %}
+      {% assign this_year = year.name %}
+      {% if this_year < 2016 %}
+      {% assign class = nil %}
+      {% endif %}
+      <div class="{{ class }}">
+        {% if this_year >= 2016 %}
+        <h3 class="section">{{ year.name }}</h3>
+        {% else %}
+        {% unless before %}
+        <h3 class="section">Before 2016</h3>
+        {% assign before = true %}
+        {% endunless %}
+        {% endif %}
+        <ul class="publication-list-post">
+          {% for post in year.items %}
+          <li class="publication-list-post-content">
+            <div class="publication-list-post-content-title">
+              {{ post.title }}
+              {% if post.link %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.link }}" target="_blank">link</a>]
+              </span>
+              {% endif %}
+              {% if post.pdf %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.pdf }}" target="_blank">pdf</a>]
+              </span>
+              {% endif %}
+              {% if post.code %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.code }}" target="_blank">code</a>]
+              </span>
+              {% endif %}
+              {% if post.slide %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.slide }}" target="_blank">slide</a>]
+              </span>
+              {% endif %}
+              {% if post.video %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.video }}" target="_blank">video</a>]
+              </span>
+              {% endif %}
+              {% if post.blog %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.blog }}" target="_blank">blog</a>]
+              </span>
+              {% endif %}
+            </div>
+            {% if post.description %}
+            <div class="publication-list-post-content-description">
+              {{ post.description }}
+            </div>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div>No publication found</div>
+      {% endif %}
+    </div>
+
+    <div class="section-container">
+      <h2 class="section">Domestic Journal</h2>
+      {% if site.categories.journal_domestic %}
+      {% assign grouped = site.categories.journal_domestic | sort: "date"
+        | reverse | group_by_exp: "p", "p.date | date: '%Y' | to_integer" %}
+      {% assign before = false %}
+      {% assign class = 'second-section-container' %}
+      {% for year in grouped %}
+      {% assign this_year = year.name %}
+      {% if this_year < 2016 %}
+      {% assign class = nil %}
+      {% endif %}
+      <div class="{{ class }}">
+        {% if this_year >= 2016 %}
+        <h3 class="section">{{ year.name }}</h3>
+        {% else %}
+        {% unless before %}
+        <h3 class="section">Before 2016</h3>
+        {% assign before = true %}
+        {% endunless %}
+        {% endif %}
+        <ul class="publication-list-post">
+          {% for post in year.items %}
+          <li class="publication-list-post-content">
+            <div class="publication-list-post-content-title">
+              {{ post.title }}
+              {% if post.domestic_award %}
+              <span class="publication-list-post-link">
+                <b>(우수논문상)</b>
+              </span>
+              {% endif %}
+              {% if post.link %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.link }}" target="_blank">link</a>]
+              </span>
+              {% endif %}
+              {% if post.pdf %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.pdf }}" target="_blank">pdf</a>]
+              </span>
+              {% endif %}
+              {% if post.code %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.code }}" target="_blank">code</a>]
+              </span>
+              {% endif %}
+              {% if post.slide %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.slide }}" target="_blank">slide</a>]
+              </span>
+              {% endif %}
+              {% if post.video %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.video }}" target="_blank">video</a>]
+              </span>
+              {% endif %}
+              {% if post.blog %}
+              <span class="publication-list-post-link">
+                [<a href="{{ post.blog }}" target="_blank">blog</a>]
+              </span>
+              {% endif %}
+            </div>
+            {% if post.description %}
+            <div class="publication-list-post-content-description">
+              {{ post.description }}
+            </div>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+      {% else %}
+      <div>No publication found</div>
+      {% endif %}
+    </div>
+  </div>
+</div>

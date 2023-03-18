@@ -1,0 +1,35 @@
+- title: Member
+  url: /member
+  sublinks:
+    - title: Professor
+      url: /member/professor.html
+    - title: Students
+      url: /member/students.html
+    - title: Alumni
+      url: /member/alumni.html
+- title: News
+  url: /news
+- title: Research
+  url: /research
+  sublinks:
+    - title: Research
+      url: /research
+    - title: Project
+      url: /research/projects.html
+- title: Publication
+  url: /publication
+  sublinks:
+    - title: Conference
+      url: /publication/publication_conferences.html
+    - title: Journal
+      url: /publication
+- title: Gallery
+  url: /gallery/gallery
+- title: Contact
+  url: /contact/contact
+# - title: Seminar
+#   url: /seminar
+# - title: Tags
+#   url: /tags
+# - title: People
+#  url: /people

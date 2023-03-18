@@ -1,0 +1,116 @@
+---
+layout: default
+---
+
+
+<img src="/post_image/home.png" desc="logo" />
+
+<!-- <div class="header-title">
+  <img src="/images/cslab_logos.png" desc="logo" />
+</div> -->
+<!-- <br>
+<b>C</b>yber <b>S</b>afety <b>Lab</b>
+<br>
+<br>
+Artificial Intelligence Communication Engineering,<br>
+Gyeongsang National University -->
+<!-- <br>
+<br> -->
+
+<!-- <div class="header-title-desc">
+  <span><b>C</b>yber <b>S</b>afety <b>Lab</b></span>
+  Artificial Intelligence Communication Engineering,<br>
+  Gyeongsang National University
+</div> -->
+<!-- <h2 class="section">&nbsp;Cyber Safety Lab</h2> -->
+<!-- <div class="section-desc">
+  소개글 작성란
+</div> -->
+<!-- <a href="/research" , style="color:black">
+  <p style="text-align:right">Details ></p>
+</a> -->
+
+<h2 class="section">Recent News</h2>
+<div class="list">
+  {% if site.categories.news %}
+  {% assign sorted = site.categories.news | sort: "date" | reverse %}
+  <!-- This loops through the paginated posts -->
+  {% for post in sorted limit:5 %}
+  <div class="list-post">
+    {% if post.link %}
+    <a href="{{ post.link }}">
+      {% else %}
+      <a href="{{ post.url | prepend: site.baseurl }}">
+        {% endif %}
+        <div class="list-post-date">
+          <time>{{ post.date | date_to_string }}</time>
+        </div>
+        <div class="list-post-title">
+          {{ post.title }}
+        </div>
+        {% if post.description %}
+        <div class="list-post-desc">
+          {{ post.description }}
+        </div>
+        {% endif %}
+      </a>
+    </a>
+  </div>
+  {% endfor %}
+  <a href="news/index.html" , style="color:black">
+    <p style="text-align:right">more ></p>
+  </a>
+  {% else %}
+  <h2>No news found</h2>
+  {% endif %}
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img class="swiper-img banner1" src="/post_image/banner1.jpg" />
+        <div class="swiper-tint">
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination swiper-pagination-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+  </div>
+
+
+
+  <script>
+    window.onload = function () {
+      var mySwiper = new Swiper('.swiper-container', {
+        loop: true,
+
+        pagination: {
+          el: '.swiper-pagination',
+        },
+
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: true,
+        },
+
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+
+        scrollbar: {
+          el: '.swiper-scrollbar',
+        },
+      })
+    }
+  </script>
+
+  <style>
+    .swiper-container {
+      height: 35rem;
+    }
+
+    /* .banner2 {
+    object-fit: cover !important;
+  } */
+  </style>

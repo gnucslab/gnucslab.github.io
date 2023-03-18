@@ -1,0 +1,46 @@
+---
+layout: page
+title: Seminar
+---
+
+<div class="seminar">
+  { % for semester in site.data.semesters % }
+  { % assign sorted = site.categories.seminar | where: 'semester', semester
+    | sort: "date" | reverse % }
+
+  { % if sorted.size > 0 % }
+  <h2 class="section">{ { semester } }</h2>
+  <div class="table-container">
+    <table class="table table-custom">
+      <colgroup>
+        <col width="25%">
+        <col width="50%">
+        <col width="25%">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Title</th>
+          <th scope="col">Speaker</th>
+        </tr>
+      </thead>
+      <tbody>
+        { % for post in sorted % }
+        <tr>
+          <td class="td-custom td-custom-date">
+            { { post.date | date_to_string } }
+          </td>
+          <td class="td-custom">
+            <a href="{{ post.url }}">{ { post.title } }</a>
+          </td> 
+          <td class="td-custom">
+            <a href="/authors/{{ post.author }}">{ { post.author } }</a>
+          </td>
+        </tr>
+        { % endfor % }
+      </tbody>
+    </table>
+  </div>
+  { % endif % }
+  { % endfor % }
+</div>

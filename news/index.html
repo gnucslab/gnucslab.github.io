@@ -1,0 +1,46 @@
+---
+layout: page
+title: News
+---
+
+<div class="news">
+  <div class="news-list">
+    {% if site.categories.news %}
+    {% assign grouped = site.categories.news | sort: "date" | reverse
+      | group_by_exp: "p", "p.date | date: '%Y' | to_integer" %}
+    {% assign before = false %}
+    {% for year in grouped %}
+    {% assign this_year = year.name %}
+    {% if this_year >= 2016 %}
+    <h2 class="section">{{ year.name }}</h2>
+    {% else %}
+    {% unless before %}
+    <h2 class="section">Before 2016</h2>
+    {% assign before = true %}
+    {% endunless %}
+    {% endif %}
+    {% for post in year.items %}
+    <div class="news-list-post">
+      <div class="news-list-post-content">
+        <a href="{{ post.url }}">
+          <div class="news-list-post-content-date">
+            <time>{{ post.date | date_to_string }}</time>
+          </div>
+          <div class="news-list-post-content-title">
+            {{ post.title }}
+          </div>
+          {% if post.description %}
+          <div class="news-list-post-content-description">
+            {{ post.description }}
+          </div>
+          {% endif %}
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% else %}
+    <div>No news found</div>
+    {% endif %}
+  </div>
+</div>
