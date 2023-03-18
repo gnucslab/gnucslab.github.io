@@ -13,4 +13,4 @@ categories:
 수상하신 ACE팀 축하드립니다!
 
 
-<img src="/post_image/22_F1_tenth_2nd_prize.jpg" width="700">
+<img src="/post_image/221214_F1_tenth_2nd_prize.jpg" width="700">
