@@ -11,11 +11,11 @@
   url: /news
 - title: Research
   url: /research
-  sublinks:
-    - title: Research
-      url: /research
-    - title: Project
-      url: /research/projects.html
+  # sublinks:
+  #   - title: Research
+  #     url: /research
+  #   - title: Project
+  #     url: /research/projects.html
 - title: Publication
   url: /publication
   sublinks:
